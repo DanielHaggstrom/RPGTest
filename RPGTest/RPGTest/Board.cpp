@@ -8,32 +8,26 @@ bool Board::load(std::ifstream &file)
 {
 	int box;
 
-	file >> id;
+	file >> dimx;
 
 	if (!file.fail())
 	{
-		file >> dimx;
+		file >> dimy;
 
 		if (!file.fail())
 		{
-			file >> dimy;
-
-			if (!file.fail())
+			for (int i = 0; i < dimy; i++)
 			{
-				for (int i = 0; i < dimy; i++)
+				for (int j = 0; j < dimx; j++)
 				{
-					for (int j = 0; j < dimx; j++)
-					{
-						file >> box;
+					file >> box;
 
-						if (!file.fail()) board[j][i] = Box(box);
+					if (!file.fail()) board[j][i] = Box(box);
 
-						else return false;
-					}
+					else return false;
 				}
-				return true;
 			}
-			else return false;
+			return true;
 		}
 		else return false;
 	}
@@ -42,9 +36,8 @@ bool Board::load(std::ifstream &file)
 
 void Board::save(std::ofstream &file)
 {
-	file << id << std::endl
-		<< dimx << " " << dimy 
-		<< std::endl;
+	file << dimx << " " 
+		<< dimy << std::endl;
 
 	for (int i = 0; i < dimy; i++)
 	{
@@ -56,7 +49,7 @@ void Board::save(std::ofstream &file)
 	}
 }
 
-void Board::create(BoardList boards, std::string &id)
+void Board::create(MapList maps, std::string &id)
 {
-	*this = boards.get(id);
+	//*this = maps.get(id).board;
 }

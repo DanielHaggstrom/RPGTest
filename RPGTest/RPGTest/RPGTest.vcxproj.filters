@@ -21,9 +21,6 @@
     <ClInclude Include="Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BoardList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Characters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,11 +51,12 @@
     <ClInclude Include="UtilsWin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="RPGTest.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Board.cpp">

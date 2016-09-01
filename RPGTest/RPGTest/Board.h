@@ -4,29 +4,26 @@
 #include <string>
 #include "Coord.h"
 #include <fstream>
-#include "BoardList.h"
+#include "MapList.h"
 
 enum Box { ULC, URC, LLC, LRC, CF, HL, VL, EMP, ENMY, PLYR };
 
 class Board
 {
 private:
-
-	std::string id;
-
+	
 	Box** board;
 	static int dimx, dimy;
 
 public:
 
 	Board() {};
-	Board(BoardList boards, std::string &id) { create(boards, id); };
+	Board(MapList maps, std::string &id) { create(maps, id); };
 
-	std::string getId()  { return id; }
 	static int getDimX() { return dimx; }
 	static int getDimY() { return dimy; }
 
-	void create(BoardList boards, std::string &id);
+	void create(MapList maps, std::string &id);
 
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);
