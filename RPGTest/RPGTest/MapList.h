@@ -2,8 +2,9 @@
 #define MAPLIST
 
 #include "MainList.h"
-#include "Board.h"
 
-class BoardList : public List<Board> {};
+class Map;
+
+class MapList : public List<Map> {};
 
 #endif
