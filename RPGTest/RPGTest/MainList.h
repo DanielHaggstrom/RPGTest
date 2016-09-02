@@ -25,42 +25,42 @@ protected:
 	int counter, dim;
 	T** list;
 
-	bool search(const std::string &id, int &pos, int &left_key, int &right_key) const;
-
 	void shiftRight(const int pos);
 	void shiftLeft(const int pos);
 
-	void resize(int dim);
 	void init(int dim);
 	void release();
+	void resize(int dim);
 
 public:
 
 	List() : counter(0), list(nullptr) { init(START_ELEM); }
 	~List() { release(); }
 
-	inline bool full()  const { return counter == dim; }
+	inline bool full() const  { return counter == dim; }
 	inline bool empty() const { return counter == 0; }
-	inline int length() const { return counter; }
+	inline int length() const { return this->counter; }
 
-	T* operator [](int i) const { return list[i]; }
+	T* operator [](int i) { assert(0 <= i && i < counter);  return list[i]; }
 
+	bool insert(T* elem);
 	bool destroy(const std::string &id);
-	bool pop(const std::string &id);
-	void insert(T* elem);
+	bool pop(T* elem);
 
 	void erase();
 
+	bool search(const std::string &id, int &pos, int &left_key, int &right_key) const;
 	T* get(const std::string &id);
 
 	void save(const std::string &name);
 	bool load(const std::string &name);
 };
 
+//Inserts an element on the list
 template<class T>
-void List<T>::insert(T* elem)
+bool List<T>::insert(T* elem)
 {
-	if (full()) resize(dim + 1);
+	if (full()) resize(dim * 3 / 2 + 1);
 
 	int pos;
 	int left_key = 0, right_key = counter - 1;
@@ -69,8 +69,10 @@ void List<T>::insert(T* elem)
 	shiftRight(pos);
 	list[pos] = elem;
 	counter++;
+	return true;
 }
 
+//Take an element out of the list and deletes it
 template<class T>
 bool List<T>::destroy(const std::string &id)
 {
@@ -78,27 +80,31 @@ bool List<T>::destroy(const std::string &id)
 	int left_key = 0, right_key = counter - 1;
 	if (search(id, pos, left_key, right_key))
 	{
+		assert(0 <= pos && pos < counter);
 		delete list[pos];
 		shiftLeft(pos);
+		counter--;
 		return true;
 	}
 	else return false;
 }
 
+//Take an element out of the list (does not delete it)
 template<class T>
-bool List<T>::pop(const std::string &id)
+bool List<T>::pop(T* elem)
 {
 	int pos;
 	int left_key = 0, right_key = counter - 1;
-	if (search(id, pos, left_key, right_key))
+	if (search(elem->getId(), pos, left_key, right_key))
 	{
-		list[pos] = nullptr;
 		shiftLeft(pos);
+		counter--;
 		return true;
 	}
 	else return false;
 }
 
+//Take all elements out of the list (does not delete them)
 template<class T>
 void List<T>::erase()
 {
@@ -109,6 +115,8 @@ void List<T>::erase()
 	counter = 0;
 }
 
+//Looks for an element on the list, and give you its position, 
+//if no found, it gives you the place where it should be
 template<class T>
 bool List<T>::search(const std::string &id, int &pos, int &left_key, int &right_key) const
 {
@@ -131,6 +139,8 @@ bool List<T>::search(const std::string &id, int &pos, int &left_key, int &right_
 	}
 }
 
+//Gives you the element of the list with the name you give to it
+//if does not exist, gives you nullptr
 template<class T>
 T* List<T>::get(const std::string &id)
 {
@@ -140,6 +150,7 @@ T* List<T>::get(const std::string &id)
 	return search(id, pos, ini, fin) ? list[pos] : nullptr;
 }
 
+//Saves the list content on the file with the name you give it
 template<class T>
 void List<T>::save(const std::string &name)
 {
@@ -157,6 +168,8 @@ void List<T>::save(const std::string &name)
 	file.close();
 }
 
+//Loads the list from the file with the name you give it
+//(if this file exists)
 template<class T>
 bool List<T>::load(const std::string &name)
 {
@@ -170,7 +183,7 @@ bool List<T>::load(const std::string &name)
 	{
 		right = true;
 
-		while (right)
+		for (int i = 0; right; i++)
 		{
 			elem = new T;
 
@@ -189,51 +202,58 @@ bool List<T>::load(const std::string &name)
 	else return false;
 }
 
+//Moves all elements on the list to the right from the position you give it
 template<class T>
 void List<T>::shiftRight(const int pos)
 {
+	assert(!full());
 	for (int i = counter; i > pos; i--)
 	{
 		list[i] = list[i - 1];
 	}
 }
 
+//Moves all elements on the list to the left from the position you give it
 template<class T>
 void List<T>::shiftLeft(const int pos)
 {
+	assert(0 <= pos && pos < counter);
 	for (int i = pos; i < counter - 1; i++)
 	{
 		list[i] = list[i + 1];
 	}
-	counter--;
 }
 
+//Creates the empty list, with the size you give it
 template<class T>
-void List<T>::init(int newdim)
+void List<T>::init(int dim)
 {
-	if (newdim <= 0)
+	assert(list == nullptr);
+	if (dim <= 0)
 	{
 		list = nullptr;
 		dim = 0;
 	}
 	else
 	{
-		list = new T*[newdim];
+		list = new T*[dim];
 
-		for (int i = 0; i < newdim; i++)
+		for (int i = 0; i < dim; i++)
 		{
 			list[i] = nullptr;
 		}
 
-		dim = newdim;
+		dim = dim;
 	}
 	counter = 0;
 }
 
+//Take all elements out of the list and deletes them, 
+//then delete the list inself
 template<class T>
 void List<T>::release()
 {
-	if (dim != 0)
+	if (this->dim != 0)
 	{
 		for (int i = 0; i < counter; i++)
 		{
@@ -247,6 +267,8 @@ void List<T>::release()
 	}
 }
 
+//Increase the list`s size by creating a new one, with the new size
+//an then it take all the first list`s elements to the new one
 template<class T>
 void List<T>::resize(int newdim)
 {
@@ -256,7 +278,7 @@ void List<T>::resize(int newdim)
 
 		for (int i = 0; i < counter; i++)
 		{
-			newlist[i] = list[i];
+			newlist[i] = this->list[i];
 		}
 		for (int i = counter; i < newdim; i++)
 		{
