@@ -3,12 +3,10 @@
 
 #include <string>
 #include <fstream>
-#include "Coord.h"
 
 struct NPC
 {
 	std::string id;
-	Coord coord;
 	int health;
 	int power;
 
@@ -29,21 +27,9 @@ bool NPC::load(std::ifstream &file)
 		if (!file.fail())
 		{
 			file >> power;
+			
+			if (!file.fail()) return true;
 
-			if (file.fail())
-			{
-				file >> coord.x;
-
-				if (!file.fail())
-				{
-					file >> coord.y;
-
-					if (!file.fail()) return true;
-
-					else return false;
-				}
-				else return false;
-			}
 			else return false;
 		}
 		else return false;
@@ -55,9 +41,7 @@ void NPC::save(std::ofstream &file)
 {
 	file << id << std::endl
 		<< health << std::endl
-		<< power << std::endl
-		<< coord.x << std::endl
-		<< coord.y << std::endl;
+		<< power << std::endl;
 }
 
 #endif

@@ -10,8 +10,6 @@ struct Player
 	int health;
 	int power;
 
-	//Coord coord;
-
 	std::string getId() { return id; }
 
 	bool load(const std::string &name);
@@ -30,9 +28,6 @@ bool Player::load(const std::string &name)
 		file >> health;
 		file >> power;
 
-		//file >> coord.x;
-		//file >> coord.y;
-
 		file.close();
 
 		return true;
@@ -49,8 +44,6 @@ void Player::save(const std::string &name)
 	file << id << std::endl
 		<< health << std::endl
 		<< power << std::endl;
-		//coord.x << std::endl
-		//coord.y << std::endl
 }
 
 #endif
