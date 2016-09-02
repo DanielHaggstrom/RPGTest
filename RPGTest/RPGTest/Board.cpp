@@ -1,5 +1,6 @@
 #include "Board.h"
-#include "Coord.h"
+#include <fstream>
+#include "Map.h"
 
 int Board::dimx;
 int Board::dimy;
@@ -49,7 +50,11 @@ void Board::save(std::ofstream &file)
 	}
 }
 
-void Board::create(MapList maps, std::string &id)
+void Board::create(MapList* maps, std::string &id)
 {
-	//*this = maps.get(id).board;
+	Map* newMap = new Map;
+
+	newMap = maps->get(id);
+
+	if (newMap != nullptr) *this = newMap->getBoard();
 }

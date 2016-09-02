@@ -1,12 +1,25 @@
+#ifndef MAP
+#define MAP
+
 #include <string>
-#include "Board.h"
 #include <fstream>
+#include "Board.h"
 
-
-struct Map
+class Map
 {
+
+private:
+
 	std::string id;
 	Board board;
+
+public:
+
+	Map() {};
+	~Map() {};
+
+	std::string getId() { return id; }
+	Board getBoard() { return board; }
 
 	bool load(std::ifstream &file)
 	{
@@ -28,3 +41,5 @@ struct Map
 		board.save(file);
 	}
 };
+
+#endif

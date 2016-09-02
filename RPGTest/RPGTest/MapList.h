@@ -2,7 +2,8 @@
 #define MAPLIST
 
 #include "MainList.h"
-#include "Map.h"
+
+class Map;
 
 class MapList : public List<Map> {};
 

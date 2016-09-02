@@ -3,27 +3,29 @@
 
 #include <string>
 #include "Coord.h"
-#include <fstream>
 #include "MapList.h"
 
-enum Box { ULC, URC, LLC, LRC, CF, HL, VL, EMP, ENMY, PLYR };
+enum Box { ULC, ULR, LLC, LRC, CF, HL, VL, EMP, ENMY, PLYR };
 
 class Board
 {
 private:
-	
+
 	Box** board;
 	static int dimx, dimy;
+
+	void destroy();
 
 public:
 
 	Board() {};
-	Board(MapList maps, std::string &id) { create(maps, id); };
+	Board(MapList* maps, std::string &id) { create(maps, id); };
 
+	Box** getBoard() { return board; }
 	static int getDimX() { return dimx; }
 	static int getDimY() { return dimy; }
 
-	void create(MapList maps, std::string &id);
+	void create(MapList* maps, std::string &id);
 
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);
@@ -33,4 +35,6 @@ public:
 	Box& operator ()(const int i, const int j) const { return board[i][j]; }
 };
 
+
 #endif
+
