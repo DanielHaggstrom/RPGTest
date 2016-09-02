@@ -111,6 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Date.h" />
     <ClInclude Include="GlobalConstants.h" />
     <ClInclude Include="MapList.h" />
     <ClInclude Include="Characters.h" />
@@ -129,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Coord.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
