@@ -118,11 +118,13 @@
     <ClInclude Include="NPC.h" />
     <ClInclude Include="NPCLists.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="quest.h" />
     <ClInclude Include="UtilsWin.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="quest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

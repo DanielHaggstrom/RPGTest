@@ -42,12 +42,18 @@
     <ClInclude Include="NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="quest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Date.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
