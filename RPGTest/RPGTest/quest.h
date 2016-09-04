@@ -1,6 +1,11 @@
 #ifndef QUEST_H
 #define QUEST_H
 
+#include <fstream>
+#include <string>
+
+
+
 class Quest
 {
 private:
@@ -19,16 +24,17 @@ public:
     void setAvaiable(bool avaiable){this->avaiable = avaiable;}
     void setCompleted(bool completed){this->completed = completed;}
     void setId(std::string id){this->id = id;}
-    void setDescription(std::string description){description = description;}
+    void setDescription(std::string description){this->description = description;}
     bool getAvaiable(){return avaiable;}
     bool getCompleted(){return completed;}
     std::string getId(){return id;}
     std::string getDescription(){return description;}
     void printQuest();
+	void readQuest();
+	void save();
 
 
-	bool load(std::ifstream &file);
-	void save(std::ofstream &file);
+
 };
 
 #endif

@@ -1,0 +1,9 @@
+q_bandidos
+prueba de terror
+
+q_veneno
+envena el pozo del pueblo
+
+q_bandidos2
+chupa
+

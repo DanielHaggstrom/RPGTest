@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 #include "quest.h"
+#include "archivo.h"
 
 //NUNCA NUNCA UTILIZAR LAS BIBLIOTECA IOSTREAM EN UN 
 //ARCHIVO QUE NO SEA EL ESPCIFICO PARA LA INTERFAZ
@@ -21,7 +23,7 @@ Quest::Quest()
 Quest::Quest(const std::string id)
 {
     this->id = id;
-	description = "template";
+	description = find(id, "quest.txt");
     avaiable = false;
     completed = false;
 }
@@ -35,24 +37,17 @@ void Quest::printQuest()
     std::cout << "Quest description: " << description << std::endl << std::endl << std::endl;
 }
 
-
-bool Quest::load(std::ifstream &file)
-{
-	file >> id;
-
-	if (!file.fail())
-	{
-		file >> HowMany;
-
-		if (file.fail()) return true;
-
-		else return false;
-	}
-	else return false;
+void Quest::readQuest(){
+	description = find(id, "quest.txt");
 }
 
-void Quest::save(std::ofstream &file)
+void Quest::save()
 {
-	file << id << " " << HowMany << std::endl;
+	std::fstream file("quest.txt", std::ios::out | std::ios::app);
+	file << this->id << std::endl;
+	file << this->description << std::endl;
+	file << std::endl;
+	file.close();
 }
+
 
