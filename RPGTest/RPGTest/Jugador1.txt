@@ -1,0 +1,8 @@
+avaiable_Quest
+q_bandidos2
+
+completed_Quest
+q_veneno
+
+finished_Quest
+q_bandidos

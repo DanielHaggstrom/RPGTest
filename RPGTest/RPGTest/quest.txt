@@ -2,8 +2,10 @@ q_bandidos
 prueba de terror
 
 q_veneno
-envena el pozo del pueblo
+envena el\r\n pozo del pueblo
 
 q_bandidos2
 chupa
 
+q_bandidos3
+lul

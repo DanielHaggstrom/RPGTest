@@ -12,8 +12,9 @@ private:
 
 	std::string id;
     std::string description;
-    bool avaiable = false;
-    bool completed = false;
+    bool avaiable;
+    bool completed;
+	bool fisnished;
 
 public:
 
@@ -29,10 +30,14 @@ public:
     bool getCompleted(){return completed;}
     std::string getId(){return id;}
     std::string getDescription(){return description;}
+
+	void setFisnished(bool fisnished){ this->fisnished = fisnished; }
+	bool getFisnished(){ return fisnished; }
+
     void printQuest();
 	void readQuest();
 	void save();
-
+	void loadQuest();
 
 
 };
