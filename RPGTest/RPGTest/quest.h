@@ -31,8 +31,6 @@ public:
 
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);
-
-
 };
 
 #endif

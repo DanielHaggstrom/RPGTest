@@ -29,10 +29,10 @@ public:
 
 	static Manager* getManager() { return manager; }
 
-	QuestList getQuests() { return quests; }
-	NPCList getEnemies() { return enemies; }
-	ItemList getItems() { return items; }
-	GameList getGames() { return games; }
+	QuestList* getQuests() { return &quests; }
+	NPCList* getEnemies() { return &enemies; }
+	ItemList* getItems() { return &items; }
+	GameList* getGames() { return &games; }
 };
 
 #endif
