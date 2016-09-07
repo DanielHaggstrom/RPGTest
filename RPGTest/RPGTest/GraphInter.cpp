@@ -1,12 +1,12 @@
 #include "GlobalConstants.h"
 #include "GraphInter.h"
+#include "GameList.h"
 #include "utilsWin.h"
 #include <iostream>
 #include <ctype.h>
 #include <sstream>
 #include <iomanip>
 #include <conio.h>
-#include <vector>
 
 GraphInter* GraphInter::inter = nullptr;
 
@@ -22,15 +22,22 @@ void GraphInter::load()
 	if (inter == nullptr) inter = new GraphInter;
 }
 
-int GraphInter::mainMenu()
+int GraphInter::mainMenu(GameList games)
 {
+	int i, j;
 	std::vector<std::string> elems;
 
-	elems.push_back("Sign up");
-	elems.push_back("Sign in");
-	elems.push_back("Exit");
+	for (i = 0; i < games.length(); i++)
+	{
+		elems.push_back(games[i]->getId());
+	}
 
-	return menu(elems);
+	for (j = i; j < 4; j++)
+	{
+		elems.push_back("New Game");
+	}
+
+	return menu(elems, "Choose file:");
 }
 
 void GraphInter::pause()
@@ -79,6 +86,20 @@ std::string GraphInter::valid_user()
 	id = id + "@fdimail.com";
 
 	return id;
+}
+
+std::string GraphInter::center_word(std::string word, int length, std::string arround)
+{
+	if (word.size() != length)
+	{
+		for (int i = word.size(); i < length; i++)
+		{
+			if (word.size() % 2) word += arround;
+
+			else word = arround + word;
+		}
+	}
+	return word;
 }
 
 void GraphInter::enter(std::string &word)
@@ -135,13 +156,13 @@ std::string GraphInter::linea()
 	return line.str();
 }
 
-int GraphInter::menu(std::vector<std::string> elems)
+int GraphInter::menu(std::vector<std::string> elems, std::string statement)
 {
 	int key = UP, elem = 0;
 
 	do
 	{
-		display("Which one do you choose?: ");
+		display(statement);
 
 		for (int i = 0; i < elems.size(); i++)
 		{

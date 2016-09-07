@@ -1,6 +1,7 @@
 #ifndef GRAPHINTER
 #define GRAPHINTER
 
+#include "GameList.h"
 #include <string>
 #include <vector>
 
@@ -19,7 +20,7 @@ private:
 
 	int update(int key, int elem, int max_elems);
 
-	int menu(std::vector<std::string> elems);
+	int menu(std::vector<std::string> elems, std::string statement);
 
 	void tab_word(std::string word, int pos, int cont);
 	std::string tab_word(std::string word);
@@ -30,13 +31,15 @@ public:
 	static void close();
 	static void load();
 
-	int mainMenu();
+	int mainMenu(GameList games);
 
 	std::string linea();
 	void clearConsole();
 	void pause();
 
 	std::string valid_user();
+
+	std::string center_word(std::string word, int length, std::string arround);
 
 	void enter(std::string &word);
 	void enter(int &digit);
