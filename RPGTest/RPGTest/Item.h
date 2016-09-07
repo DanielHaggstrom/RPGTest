@@ -4,10 +4,14 @@
 #include <string>
 #include <fstream>
 
-struct Item
+class Item
 {
+private:
+
 	std::string id;
 	int HowMany;
+
+public:
 
 	std::string getId() { return id; }
 	int getHowMany() { return HowMany; }
@@ -15,25 +19,5 @@ struct Item
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);
 };
-
-bool Item::load(std::ifstream &file)
-{
-	file >> id;
-
-	if (!file.fail())
-	{
-		file >> HowMany;
-
-		if (file.fail()) return true;
-
-		else return false;
-	}
-	else return false;
-}
-
-void Item::save(std::ofstream &file)
-{
-	file << id << " " << HowMany << std::endl;
-}
 
 #endif

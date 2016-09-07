@@ -5,11 +5,15 @@
 #include <fstream>
 #include <string>
 
-struct Game
+class Game
 {
+private:
+
 	Player player;
 	std::string id;
 	std::string quest;
+
+public:
 
 	Game() {}
 
@@ -17,36 +21,11 @@ struct Game
 		id(player.getId()), quest("Beguin") {}
 
 	std::string getId() { return id; }
+	Player getPlayer() { return player; }
+	std::string getQuest() { return quest; }
 
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);
 };
-
-bool Game::load(std::ifstream &file)
-{
-	file >> id;
-
-	if (!file.fail())
-	{
-		file >> quest;
-
-		if (!file.fail())
-		{
-			if (player.load(file)) return true;
-
-			else return false;
-		}
-		else return false;
-	}
-	else return false;
-}
-
-void Game::save(std::ofstream &file)
-{
-	file << id << std::endl
-		<< quest << std::endl;
-
-	player.save(file);
-}
 
 #endif

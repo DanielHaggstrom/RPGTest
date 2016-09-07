@@ -2,5 +2,5 @@
 
 void main()
 {
-	Manager manager("RPGText");
+
 }

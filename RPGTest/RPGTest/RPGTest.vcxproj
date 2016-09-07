@@ -128,10 +128,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GraphInter.cpp" />
-    <ClCompile Include="RPGText.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="quest.cpp" />
+    <ClCompile Include="RPGText.cpp" />
     <ClCompile Include="UtilsWin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

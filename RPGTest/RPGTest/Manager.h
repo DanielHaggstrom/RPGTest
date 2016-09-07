@@ -2,7 +2,6 @@
 #define MANAGER
 
 #include "QuestList.h"
-#include "ItemList.h"
 #include "GameList.h"
 #include "NPCLists.h"
 #include <string>
@@ -16,7 +15,6 @@ private:
 	std::string domain;
 	QuestList quests;
 	NPCList enemies;
-	ItemList items;
 	GameList games;
 
 	void shutDown();
@@ -31,7 +29,6 @@ public:
 
 	QuestList* getQuests() { return &quests; }
 	NPCList* getEnemies() { return &enemies; }
-	ItemList* getItems() { return &items; }
 	GameList* getGames() { return &games; }
 };
 
