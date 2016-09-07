@@ -13,6 +13,9 @@ private:
 
 public:
 
+	Item(std::string &newId) : id(newId), HowMany(0) {}
+	Item() {};
+
 	std::string getId() { return id; }
 	int getHowMany() { return HowMany; }
 

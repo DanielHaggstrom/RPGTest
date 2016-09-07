@@ -1,6 +1,7 @@
 #ifndef ITEMLIST
 #define ITEMLIST
 
+#include "GlobalConstants.h"
 #include "MainList.h"
 #include <fstream>
 #include "Item.h"
@@ -44,13 +45,24 @@ public:
 		}
 	}
 
-	void addItem(Item* newItem)
+	bool addItem(Item* newItem)
 	{
 		if (get(newItem->getId()) != nullptr)
 		{
-			get(newItem->getId())->increase();
+			if (get(newItem->getId())->getHowMany() < MAX_ITEMS)
+			{
+				get(newItem->getId())->increase();
+
+				return true;
+			}
+			else return false;
 		}
-		else insert(newItem);
+		else
+		{
+			insert(newItem);
+
+			return true;
+		}
 	}
 
 	bool looseItem(std::string id)

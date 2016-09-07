@@ -32,7 +32,7 @@ int GraphInter::mainMenu(GameList games)
 		elems.push_back(games[i]->getId());
 	}
 
-	for (j = i; j < 4; j++)
+	for (j = i; j < MAX_FILES; j++)
 	{
 		elems.push_back("New Game");
 	}
