@@ -43,6 +43,28 @@ public:
 			list[i]->save(file);
 		}
 	}
+
+	void addItem(Item* newItem)
+	{
+		if (get(newItem->getId()) != nullptr)
+		{
+			get(newItem->getId())->increase();
+		}
+		else insert(newItem);
+	}
+
+	bool looseItem(std::string id)
+	{
+		if (get(id) != nullptr)
+		{
+			get(id)->decrease();
+
+			if (get(id)->getHowMany() <= 0) destroy(id);
+
+			return true;
+		}
+		return false;
+	}
 };
 
 #endif
