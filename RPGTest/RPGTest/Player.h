@@ -12,35 +12,33 @@ struct Player
 
 	std::string getId() { return id; }
 
-	bool load(const std::string &name);
-	void save(const std::string &name);
+	bool load(std::ifstream &file);
+	void save(std::ofstream &file);
 };
 
-bool Player::load(const std::string &name)
+bool Player::load(std::ifstream &file)
 {
-	std::ifstream file;
+	file >> id;
 
-	file.open(name);
-
-	if (file.is_open())
+	if (!file.fail())
 	{
-		file >> id;
 		file >> health;
-		file >> power;
 
-		file.close();
+		if (!file.fail())
+		{
+			file >> power;
 
-		return true;
+			if (!file.fail()) return true;
+
+			else return false;
+		}
+		else return false;
 	}
 	else return false;
 }
 
-void Player::save(const std::string &name)
+void Player::save(std::ofstream &file)
 {
-	std::ofstream file;
-
-	file.open(name);
-
 	file << id << std::endl
 		<< health << std::endl
 		<< power << std::endl;

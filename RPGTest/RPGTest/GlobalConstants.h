@@ -1,6 +1,8 @@
 #ifndef GLOBALCONSTANTS
 #define GLOBALCONSTANTS
 
-const int START_ELEMS = 10;
+const int
+		START_ELEMS = 1,
+		HORIZONTAL = 79;
 
 #endif

@@ -3,8 +3,9 @@
 
 #include <fstream>
 #include <string>
+#include <vector>
 
-
+class QuestList;
 
 class Quest
 {
@@ -12,32 +13,24 @@ private:
 
 	std::string id;
     std::string description;
-    bool avaiable;
-    bool completed;
-	bool fisnished;
+	std::vector<std::string> options;
 
 public:
 
-    Quest();
-    Quest(std::string id);
-    ~Quest();
+	Quest() {};
+    Quest(std::string id, std::string description, std::vector<std::string> options);
+	~Quest() {};
 
-    void setAvaiable(bool avaiable){this->avaiable = avaiable;}
-    void setCompleted(bool completed){this->completed = completed;}
-    void setId(std::string id){this->id = id;}
-    void setDescription(std::string description){this->description = description;}
-    bool getAvaiable(){return avaiable;}
-    bool getCompleted(){return completed;}
-    std::string getId(){return id;}
-    std::string getDescription(){return description;}
+	std::string getId(){ return id; }
+	std::string getDescription(){ return description; }
+	std::vector<std::string> getOptions() { return options; }
 
-	void setFisnished(bool fisnished){ this->fisnished = fisnished; }
-	bool getFisnished(){ return fisnished; }
+	void setId(std::string newId){ id = newId; }
+	void setDescription(std::string newDescription){ description = newDescription; }
+	void setOptions(std::vector<std::string> newOptions){ options = newOptions; }
 
-    void printQuest();
-	void readQuest();
-	void save();
-	void loadQuest();
+	bool load(std::ifstream &file);
+	void save(std::ofstream &file);
 
 
 };

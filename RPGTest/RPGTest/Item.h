@@ -10,6 +10,7 @@ struct Item
 	int HowMany;
 
 	std::string getId() { return id; }
+	int getHowMany() { return HowMany; }
 
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);

@@ -2,6 +2,8 @@
 #define LIST
 
 #include "GlobalConstants.h"
+#include <assert.h>
+#include <string>
 
 /*----------------------------
 This is a base class for all the lists this program has
@@ -34,7 +36,7 @@ protected:
 
 public:
 
-	List() : counter(0), list(nullptr) { init(START_ELEM); }
+	List() : counter(0), list(nullptr) { init(START_ELEMS); }
 	~List() { release(); }
 
 	inline bool full() const  { return counter == dim; }
