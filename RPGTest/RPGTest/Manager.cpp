@@ -77,7 +77,7 @@ Game* Manager::newGame(Objects objects, GameList games)
 	{
 		newPlayer = Player(name, objects);
 
-		newGame = &Game(newPlayer);
+		newGame = new Game(newPlayer);
 
 		return newGame;
 	}
