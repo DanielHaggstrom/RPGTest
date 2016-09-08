@@ -73,7 +73,7 @@ std::string GraphInter::valid_user()
 		{
 			for (int i = 0; i < id.size() && id_right; i++)
 			{
-				if ('A' > i || i > 'Z' && i < 'a' || i > 'z')
+				if ('A' > id[i] || id[i] > 'Z' && id[i] < 'a' || id[i] > 'z')
 				{
 					message("Error, your id cannot contain symbols or numbers, only leters");
 

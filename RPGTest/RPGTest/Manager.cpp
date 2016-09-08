@@ -53,6 +53,7 @@ void Manager::shutDown()
 
 Game* Manager::newGame(Objects objects, GameList games)
 {
+	Game* newGame;
 	Player newPlayer;
 	std::string name = "";
 	bool right;
@@ -76,7 +77,9 @@ Game* Manager::newGame(Objects objects, GameList games)
 	{
 		newPlayer = Player(name, objects);
 
-		return &Game(newPlayer);
+		newGame = &Game(newPlayer);
+
+		return newGame;
 	}
 	else return nullptr;
 }
