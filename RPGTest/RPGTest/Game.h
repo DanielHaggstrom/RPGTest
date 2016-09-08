@@ -24,6 +24,8 @@ public:
 	Player getPlayer() { return player; }
 	std::string getQuest() { return quest; }
 
+	void setQuest(std::string newQuest) { quest = newQuest; }
+
 	bool load(std::ifstream &file);
 	void save(std::ofstream &file);
 };

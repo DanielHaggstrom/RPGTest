@@ -31,11 +31,11 @@ int GraphInter::mainMenu(GameList games)
 	{
 		elems.push_back(games[i]->getId());
 	}
-
 	for (j = i; j < MAX_FILES; j++)
 	{
 		elems.push_back("New Game");
 	}
+	elems.push_back("Exit");
 
 	return menu(elems, "Choose file:");
 }
@@ -71,7 +71,7 @@ std::string GraphInter::valid_user()
 		}
 		else
 		{
-			for (char i : id)
+			for (int i = 0; i < id.size() && id_right; i++)
 			{
 				if ('A' > i || i > 'Z' && i < 'a' || i > 'z')
 				{
@@ -103,14 +103,14 @@ std::string GraphInter::center_word(std::string word, int length, std::string ar
 
 int GraphInter::QuestMenu(Quest quest)
 {
-	int key = UP, elem = 0;
+	int key = UP, elem = 0, i;
 
 	do
 	{
 		display(quest.getDescription());
 		display("what do you want to do?");
 
-		for (int i = 0; i < quest.getOptions().size(); i++)
+		for (i = 0; i < quest.getOptions().size(); i++)
 		{
 			tab_word(quest.getOptions()[i], i, elem);
 		}

@@ -63,7 +63,7 @@ Game* Manager::newGame(Objects objects, GameList games)
 
 		name = GraphInter::get()->valid_user();
 
-		if (games.get(name))
+		if (games.get(name) != nullptr)
 		{
 			GraphInter::get()->display("Error, there is already a user with this name");
 
