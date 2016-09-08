@@ -5,6 +5,8 @@ const int
 		START_ELEMS = 1,
 		HORIZONTAL = 79,
 		MAX_FILES = 4,
-		MAX_ITEMS = 10;
+		MAX_ITEMS = 10,
+		HEALTH = 100,
+		POWER = 80;
 
 #endif

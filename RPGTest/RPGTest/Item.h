@@ -13,8 +13,9 @@ private:
 
 public:
 
+	Item() {}
 	Item(std::string &newId) : id(newId), HowMany(0) {}
-	Item() {};
+	~Item() {};
 
 	std::string getId() { return id; }
 	int getHowMany() { return HowMany; }

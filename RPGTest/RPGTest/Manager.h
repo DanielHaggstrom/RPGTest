@@ -4,6 +4,7 @@
 #include "QuestList.h"
 #include "GameList.h"
 #include "NPCLists.h"
+#include "Objects.h"
 #include <string>
 
 class Manager
@@ -15,6 +16,7 @@ private:
 	std::string domain;
 	QuestList quests;
 	NPCList enemies;
+	Objects objects;
 	GameList games;
 
 	void shutDown();
@@ -29,7 +31,10 @@ public:
 
 	QuestList* getQuests() { return &quests; }
 	NPCList* getEnemies() { return &enemies; }
+	Objects* getObjects() { return &objects; }
 	GameList* getGames() { return &games; }
+
+	Game* newGame(Objects objects, GameList games);
 };
 
 #endif

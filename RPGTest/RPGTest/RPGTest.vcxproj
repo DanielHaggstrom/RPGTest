@@ -121,9 +121,12 @@
     <ClInclude Include="Manager.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="NPCLists.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Objects.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="quest.h" />
     <ClInclude Include="QuestList.h" />
+    <ClInclude Include="Session.h" />
     <ClInclude Include="UtilsWin.h" />
   </ItemGroup>
   <ItemGroup>
@@ -133,9 +136,11 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="quest.cpp" />
     <ClCompile Include="RPGText.cpp" />
+    <ClCompile Include="Session.cpp" />
     <ClCompile Include="UtilsWin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

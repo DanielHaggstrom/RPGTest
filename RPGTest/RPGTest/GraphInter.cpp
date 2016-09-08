@@ -58,7 +58,8 @@ std::string GraphInter::valid_user()
 	{
 		clearConsole();
 		id_right = true;
-
+	
+		display("Wellcome to RPGText");
 		display("Enter your id: ");
 		enter(id);
 
@@ -81,9 +82,7 @@ std::string GraphInter::valid_user()
 				else i = tolower(i);
 			}
 		}
-	} while (!id_right);
-
-	id = id + "@fdimail.com";
+	} while (!id_right);;
 
 	return id;
 }
@@ -100,6 +99,30 @@ std::string GraphInter::center_word(std::string word, int length, std::string ar
 		}
 	}
 	return word;
+}
+
+int GraphInter::QuestMenu(Quest quest)
+{
+	int key = UP, elem = 0;
+
+	do
+	{
+		display(quest.getDescription());
+		display("what do you want to do?");
+
+		for (int i = 0; i < quest.getOptions().size(); i++)
+		{
+			tab_word(quest.getOptions()[i], i, elem);
+		}
+
+		key = getKey();
+		elem = update(key, elem, quest.getOptions().size());
+
+		clearConsole();
+
+	} while (key != ENTER && key != ESCAPE);
+
+	return elem;
 }
 
 void GraphInter::enter(std::string &word)

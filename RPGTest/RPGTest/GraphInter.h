@@ -2,6 +2,7 @@
 #define GRAPHINTER
 
 #include "GameList.h"
+#include "quest.h"
 #include <string>
 #include <vector>
 
@@ -40,6 +41,8 @@ public:
 	std::string valid_user();
 
 	std::string center_word(std::string word, int length, std::string arround);
+
+	int QuestMenu(Quest quest);
 
 	void enter(std::string &word);
 	void enter(int &digit);

@@ -31,7 +31,9 @@ bool Quest::load(std::ifstream &file)
 					}
 					else return false;
 				}
-				return true;
+				if (mod.load(file) && item.load(file)) return true;
+
+				else return false;
 			}
 			else return false;
 		}
@@ -50,4 +52,6 @@ void Quest::save(std::ofstream &file)
 	{
 		file << options[i] << std::endl;
 	}
+	mod.save(file);
+	item.save(file);
 }
